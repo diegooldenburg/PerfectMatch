@@ -1,0 +1,32 @@
+<div class="mb3">
+  <input
+    type="{{ type }}"
+    [class.is-invalid]="control.touched && control.invalid"
+    class="form-control mb-2"
+    [formControl]="control"
+    placeholder="{{ label }}"
+  />
+  <div
+    class="invalid-feedback"
+    *ngIf="control.errors?.['required'] && label === 'Confirm password'"
+  >
+    Please {{ label.toLowerCase() }}.
+  </div>
+  <div
+    class="invalid-feedback"
+    *ngIf="control.errors?.['required'] && label !== 'Confirm password'"
+  >
+    Please enter a {{ label.toLowerCase() }}.
+  </div>
+  <div class="invalid-feedback" *ngIf="control.errors?.['minlength']">
+    Your {{ label.toLowerCase() }} must be at least
+    {{control.errors?.['minlength'].requiredLength}} characters.
+  </div>
+  <div class="invalid-feedback" *ngIf="control.errors?.['maxlength']">
+    Your {{ label.toLowerCase() }} cannot be longer than
+    {{control.errors?.['maxlength'].requiredLength}} characters.
+  </div>
+  <div class="invalid-feedback" *ngIf="control.errors?.['notMatching']">
+    Please ensure that your passwords match.
+  </div>
+</div>
