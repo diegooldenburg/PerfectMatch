@@ -1,10 +1,9 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AccountService } from '../services/account.service';
 import { ToastrService } from 'ngx-toastr';
 import {
   AbstractControl,
   FormBuilder,
-  FormControl,
   FormGroup,
   ValidatorFn,
   Validators,
@@ -70,7 +69,7 @@ export class RegisterComponent implements OnInit {
       this.registerForm.controls['dateOfBirth'].value
     );
     const values = { ...this.registerForm.value, dateOfBirth: dob };
-    this.accountService.register(this.registerForm.value).subscribe({
+    this.accountService.register(values).subscribe({
       next: () => {
         this.router.navigateByUrl('/members');
       },
