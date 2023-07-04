@@ -8,7 +8,7 @@ import { User } from './models/user';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  title = 'FragOut';
+  title = 'PerfectMatch';
   constructor(private accountService: AccountService) {}
   ngOnInit(): void {
     this.setCurrentUser();
