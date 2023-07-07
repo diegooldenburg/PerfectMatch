@@ -19,5 +19,7 @@ namespace API.Entities
         public List<Photo> Photos { get; set; } = new();
         public List<UserLike> LikedByUsers { get; set; } = new();
         public List<UserLike> LikedUsers { get; set; } = new();
+        public List<Message> MessagesSent { get; set; } = new();
+        public List<Message> MessagesReceived { get; set; } = new();
     }
 }
