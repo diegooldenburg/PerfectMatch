@@ -9,7 +9,7 @@
             routerLink="/members"
             [routerLinkActiveOptions]="{ exact: true }"
             routerLinkActive="active"
-            >Matches</a
+            >Members</a
           >
         </li>
         <li class="nav-item">
@@ -27,12 +27,12 @@
             >Admin</a
           >
         </li>
+        <li class="nav-item" *appHasRole="['Admin', 'Moderator']">
+          <a class="nav-link" routerLink="/errors" routerLinkActive="active"
+            >Errors</a
+          >
+        </li>
       </ng-container>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/errors" routerLinkActive="active"
-          >Errors</a
-        >
-      </li>
     </ul>
     <div
       class="dropdown"

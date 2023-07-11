@@ -35,7 +35,7 @@ export class MessageService {
     });
 
     this.hubConnection.on('UpdatedGroup', (group: Group) => {
-      if (group.connections.some((x) => x.username == otherUsername)) {
+      if (group.connections.some((x) => x.username === otherUsername)) {
         this.messageThread$.pipe(take(1)).subscribe({
           next: (messages) => {
             messages.forEach((message) => {
@@ -60,6 +60,7 @@ export class MessageService {
 
   stopHubConnection() {
     if (this.hubConnection) {
+      this.messageThreadSource.next([]);
       this.hubConnection.stop();
     }
   }
