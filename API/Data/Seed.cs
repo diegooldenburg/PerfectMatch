@@ -12,6 +12,7 @@ namespace API.Data
             context.Connections.RemoveRange(context.Connections);
             await context.SaveChangesAsync();
         }
+
         public static async Task SeedUsers(
             UserManager<AppUser> userManager,
             RoleManager<AppRole> roleManager

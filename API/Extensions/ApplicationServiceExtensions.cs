@@ -16,10 +16,6 @@ namespace API.Extensions
         {
             services.AddScoped<ITokenService, TokenService>();
             services.AddCors();
-            services.AddDbContext<DataContext>(opt =>
-            {
-                opt.UseNpgsql(config.GetConnectionString("DefaultConnection"));
-            });
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.Configure<CloudinarySettings>(config.GetSection("CloudinarySettings"));
             services.AddScoped<IPhotoService, PhotoService>();
