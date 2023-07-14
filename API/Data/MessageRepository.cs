@@ -97,17 +97,20 @@ namespace API.Data
         {
             var query = _context.Messages
                 .Where(
-                    m => m.RecipientUsername == currentUserName && m.RecipientDeleted == false &&
-                    m.SenderUsername == recipientUsername ||
-                    m.RecipientUsername == recipientUsername && m.SenderDeleted == false &&
-                    m.SenderUsername == currentUserName
+                    m =>
+                        m.RecipientUsername == currentUserName
+                            && m.RecipientDeleted == false
+                            && m.SenderUsername == recipientUsername
+                        || m.RecipientUsername == recipientUsername
+                            && m.SenderDeleted == false
+                            && m.SenderUsername == currentUserName
                 )
                 .OrderBy(m => m.MessageSent)
                 .AsQueryable();
 
-
-            var unreadMessages = query.Where(m => m.DateRead == null
-                && m.RecipientUsername == currentUserName).ToList();
+            var unreadMessages = query
+                .Where(m => m.DateRead == null && m.RecipientUsername == currentUserName)
+                .ToList();
 
             if (unreadMessages.Any())
             {

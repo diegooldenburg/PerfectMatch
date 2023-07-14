@@ -13,7 +13,11 @@ namespace API.Controllers
         private readonly IUnitOfWork _uow;
         private readonly IPhotoService _photoService;
 
-        public AdminController(UserManager<AppUser> userManager, IUnitOfWork uow, IPhotoService photoService)
+        public AdminController(
+            UserManager<AppUser> userManager,
+            IUnitOfWork uow,
+            IPhotoService photoService
+        )
         {
             _photoService = photoService;
             _uow = uow;
