@@ -7,7 +7,7 @@
       *ngIf="(messageService.messageThread$ | async)!.length > 0"
       class="chat"
     >
-      <li *ngFor="let message of (messageService.messageThread$ | async)">
+      <li *ngFor="let message of messageService.messageThread$ | async">
         <div>
           <span class="chat-img float-end">
             <img
@@ -57,11 +57,11 @@
         />
         <div class="input-form-group-append">
           <button
-            [disabled]="!messageForm.valid"
+            [disabled]="!messageForm.valid || loading"
             class="btn btn-primary"
             type="submit"
           >
-            Send
+            Send <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>
           </button>
         </div>
       </div>
